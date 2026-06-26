@@ -1,0 +1,6 @@
+
+Family       : versal
+Device       : xcve2802
+Package      : -vsvh1760
+Speed Grade  : -2MP-e-S
+Clock Period : 3.2

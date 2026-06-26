@@ -1,0 +1,245 @@
+<ENTRY>
+{
+ "thisFile": "/home/jnz/versal-aie/peak_mmul/peak_bf16/single_tile/aie_conf_buf/pl_kernels/mm2s/mm2s.hlscompile_summary",
+ "connectId": "",
+ "serverToken": "",
+ "timestamp": "0"
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_CmdStep",
+ "dateTimestamp": "Wed Jun 24 13:47:28 2026",
+ "timestampMillis": "1782280048170",
+ "buildStep": {
+  "cmdId": "8f54324d-c3f6-403c-a5ed-4ae5858293e8",
+  "name": "v++",
+  "logFile": "/home/jnz/versal-aie/peak_mmul/peak_bf16/single_tile/aie_conf_buf/pl_kernels/mm2s/logs/mm2s.steps.log",
+  "commandLine": "/tools/Xilinx/2025.2/Vitis/bin/unwrapped/lnx64.o/v++  -c --mode hls --platform /tools/Xilinx/2025.2/Vitis/base_platforms/xilinx_vek280_base_202520_1/xilinx_vek280_base_202520_1.xpfm --config mm2s.cfg ",
+  "args": [
+   "-c",
+   "--mode",
+   "hls",
+   "--platform",
+   "/tools/Xilinx/2025.2/Vitis/base_platforms/xilinx_vek280_base_202520_1/xilinx_vek280_base_202520_1.xpfm",
+   "--config",
+   "mm2s.cfg"
+  ],
+  "iniFiles": [
+   {
+    "path": "/home/jnz/versal-aie/peak_mmul/peak_bf16/single_tile/aie_conf_buf/pl_kernels/mm2s.cfg",
+    "content": "[hls]\nflow_target=vitis\nsyn.file=mm2s.cpp\nsyn.cflags=-I.\nsyn.top=mm2s\npackage.ip.name=mm2s\npackage.output.syn=true\npackage.output.format=xo\npackage.output.file=mm2s.xo\n"
+   }
+  ],
+  "cwd": "/home/jnz/versal-aie/peak_mmul/peak_bf16/single_tile/aie_conf_buf/pl_kernels"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Jun 24 13:47:28 2026",
+ "timestampMillis": "1782280048170",
+ "status": {
+  "cmdId": "8f54324d-c3f6-403c-a5ed-4ae5858293e8",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_FlowMetaData",
+ "dateTimestamp": "Wed Jun 24 13:47:30 2026",
+ "timestampMillis": "1782280050779",
+ "buildSummary": {
+  "hardwarePlatform": "",
+  "hardwareDsa": "",
+  "platformDirectory": "",
+  "runtime": "",
+  "systemConfig": "",
+  "flow": "BF_COMPILE",
+  "target": "TT_HW",
+  "kernels": [
+   {
+    "base": {
+     "type": "KERNEL",
+     "name": "mm2s",
+     "file": "/home/jnz/versal-aie/peak_mmul/peak_bf16/single_tile/aie_conf_buf/pl_kernels/mm2s.xo",
+     "reports": [],
+     "uuid": ""
+    },
+    "sources": [
+     "/home/jnz/versal-aie/peak_mmul/peak_bf16/single_tile/aie_conf_buf/pl_kernels/mm2s.cpp"
+    ],
+    "psSources": [],
+    "cuNames": [],
+    "type": "HLS",
+    "frequency": 0,
+    "freqUnits": ""
+   }
+  ],
+  "toolVersion": "2025.2"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Wed Jun 24 13:47:30 2026",
+ "timestampMillis": "1782280050779",
+ "buildStep": {
+  "cmdId": "08181f7d-81f3-49f1-8631-8ce73b4e85ba",
+  "name": "",
+  "logFile": "/home/jnz/versal-aie/peak_mmul/peak_bf16/single_tile/aie_conf_buf/pl_kernels/mm2s/hls/hls.log",
+  "commandLine": "",
+  "args": [],
+  "iniFiles": [],
+  "cwd": "/home/jnz/versal-aie/peak_mmul/peak_bf16/single_tile/aie_conf_buf/pl_kernels"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Jun 24 13:47:30 2026",
+ "timestampMillis": "1782280050779",
+ "status": {
+  "cmdId": "08181f7d-81f3-49f1-8631-8ce73b4e85ba",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Wed Jun 24 13:47:30 2026",
+ "timestampMillis": "1782280050779",
+ "report": {
+  "path": "/home/jnz/versal-aie/peak_mmul/peak_bf16/single_tile/aie_conf_buf/pl_kernels/mm2s/hls/hls_data.json",
+  "name": "",
+  "fileType": "JSON",
+  "reportType": "HLS_SYNTHESIS",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Wed Jun 24 13:47:30 2026",
+ "timestampMillis": "1782280050779",
+ "report": {
+  "path": "/home/jnz/versal-aie/peak_mmul/peak_bf16/single_tile/aie_conf_buf/pl_kernels/mm2s/hls/syn/report/csynth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "HLS_SYNTHESIS",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Wed Jun 24 13:47:30 2026",
+ "timestampMillis": "1782280050780",
+ "report": {
+  "path": "/home/jnz/versal-aie/peak_mmul/peak_bf16/single_tile/aie_conf_buf/pl_kernels/mm2s/hls/syn/report/csynth.xml",
+  "name": "",
+  "fileType": "XML",
+  "reportType": "HLS_SYNTHESIS",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Wed Jun 24 13:47:45 2026",
+ "timestampMillis": "1782280065275",
+ "report": {
+  "path": "/home/jnz/versal-aie/peak_mmul/peak_bf16/single_tile/aie_conf_buf/pl_kernels/mm2s/hls",
+  "name": "",
+  "fileType": "DIR",
+  "reportType": "HLS_DATAFLOW",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Wed Jun 24 13:47:45 2026",
+ "timestampMillis": "1782280065275",
+ "report": {
+  "path": "/home/jnz/versal-aie/peak_mmul/peak_bf16/single_tile/aie_conf_buf/pl_kernels/mm2s/hls",
+  "name": "",
+  "fileType": "DIR",
+  "reportType": "HLS_FUNCTION_CALL_GRAPH",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Wed Jun 24 13:47:45 2026",
+ "timestampMillis": "1782280065276",
+ "report": {
+  "path": "/home/jnz/versal-aie/peak_mmul/peak_bf16/single_tile/aie_conf_buf/pl_kernels/mm2s/hls",
+  "name": "",
+  "fileType": "DIR",
+  "reportType": "HLS_SCHEDULE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Jun 24 13:47:45 2026",
+ "timestampMillis": "1782280065276",
+ "status": {
+  "cmdId": "08181f7d-81f3-49f1-8631-8ce73b4e85ba",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Wed Jun 24 13:47:49 2026",
+ "timestampMillis": "1782280069813",
+ "status": {
+  "cmdId": "8f54324d-c3f6-403c-a5ed-4ae5858293e8",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Wed Jun 24 13:47:49 2026",
+ "timestampMillis": "1782280069860",
+ "report": {
+  "path": "/home/jnz/versal-aie/peak_mmul/peak_bf16/single_tile/aie_conf_buf/pl_kernels/mm2s/reports/v++_compile_mm2s_guidance.html",
+  "name": "",
+  "fileType": "HTML",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Wed Jun 24 13:47:49 2026",
+ "timestampMillis": "1782280069861",
+ "report": {
+  "path": "/home/jnz/versal-aie/peak_mmul/peak_bf16/single_tile/aie_conf_buf/pl_kernels/mm2s/reports/.db/v++_compile_mm2s_guidance.pb3",
+  "name": "",
+  "fileType": "BINARY_PROTOBUF",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>

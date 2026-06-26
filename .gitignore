@@ -1,0 +1,96 @@
+# Vitis / Vivado / AIE generated directories
+build/
+**/build/
+.Xil/
+**/.Xil/
+Work/
+**/Work/
+_x/
+**/_x/
+_x_sd/
+**/_x_sd/
+_x_temp*/
+**/_x_temp*/
+package*/
+**/package*/
+pkg.hw*/
+**/pkg.hw*/
+Emulation-*/
+**/Emulation-*/
+
+# Tool reports, logs, journals, and summaries
+logs/
+**/logs/
+reports/
+**/reports/
+*.log
+*.jou
+*.str
+*.summary
+*.compile_summary
+*.link_summary
+*.package_summary
+*_guidance.html
+
+# Hardware and runtime build artifacts
+*.xclbin
+*.xsa
+*.xo
+*.bit
+*.bin
+*.dcp
+*.ltx
+*.elf
+*.dtb
+*.bif
+*.bmm
+libadf.a
+BOOT.BIN
+Image
+boot.scr
+
+# SD-card and filesystem images
+*.img
+*.img.zip
+*.wic
+*.wic.*
+*.ext4
+rootfs.*
+
+# Object files, dependency files, and generated host binaries
+*.o
+*.obj
+*.d
+*.so
+*.a
+*.exe
+*_host
+client_exe
+
+# Simulation and waveform artifacts
+*.wdb
+*.wcfg
+*.vcd
+*.vpd
+*.fst
+xsim.dir/
+*.run/
+*.cache/
+
+# Generated metadata and temporary files
+compile_commands.json
+.cache/
+.pytest_cache/
+__pycache__/
+*.py[cod]
+*.tmp
+*.temp
+*.bak
+*.backup
+*~
+
+# Local editor / OS noise
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

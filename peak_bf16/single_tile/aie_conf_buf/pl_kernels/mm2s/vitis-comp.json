@@ -1,0 +1,10 @@
+{
+  "name": "mm2s",
+  "type": "HLS",
+  "configuration": {
+    "componentType": "HLS",
+    "configFiles": ["..\/mm2s.cfg"],
+    "work_dir": ".",
+    "csyn_args": "--platform=\/tools\/Xilinx\/2025.2\/Vitis\/base_platforms\/xilinx_vek280_base_202520_1\/xilinx_vek280_base_202520_1.xpfm"
+  }
+}

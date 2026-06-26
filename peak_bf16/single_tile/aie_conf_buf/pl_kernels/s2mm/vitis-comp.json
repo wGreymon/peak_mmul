@@ -1,0 +1,10 @@
+{
+  "name": "s2mm",
+  "type": "HLS",
+  "configuration": {
+    "componentType": "HLS",
+    "configFiles": ["..\/s2mm.cfg"],
+    "work_dir": ".",
+    "csyn_args": "--platform=\/tools\/Xilinx\/2025.2\/Vitis\/base_platforms\/xilinx_vek280_base_202520_1\/xilinx_vek280_base_202520_1.xpfm"
+  }
+}

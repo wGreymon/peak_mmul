@@ -1,0 +1,241 @@
+{
+    "Version": 0.0,
+    "Non-Netlist Instances": [
+        "sysmem0",
+        "PT0",
+        "net0",
+        "net1",
+        "unconstraint_fifo0",
+        "unconstraint_fifo1"
+    ],
+    "Non-Netlist Instance Placement": [
+        {
+            "Name": "sysmem0",
+            "Site": "AIE_ML_MEMGRP_X19Y0",
+            "Bel": "BANK0"
+        },
+        {
+            "Name": "PT0",
+            "Site": "AIE_ML_CORE_X19Y0",
+            "Bel": "CORE"
+        }
+    ],
+    "Instance Placement": [
+        {
+            "Name": "DataIn0",
+            "Site": "AIE_ML_PL_X18Y0",
+            "Bel": "AIE_ML_PL_S_AXIS_2"
+        },
+        {
+            "Name": "DataOut0",
+            "Site": "AIE_ML_PL_X18Y0",
+            "Bel": "AIE_ML_PL_M_AXIS_0"
+        },
+        {
+            "Name": "peak_mmul_graph.peak_kernel",
+            "Site": "AIE_ML_CORE_X19Y0",
+            "Bel": "CORE"
+        }
+    ],
+    "InstTerm Placement": [],
+    "DMAFIFOs Placement": [],
+    "Non-Netlist Instance Links": [
+        {
+            "PT0": [
+                "peak_mmul_graph.peak_kernel"
+            ]
+        },
+        {
+            "unconstraint_fifo0": [
+                "peak_mmul_graph.peak_kernel/pi0"
+            ]
+        },
+        {
+            "unconstraint_fifo1": [
+                "DataOut0/pi0"
+            ]
+        }
+    ],
+    "Non-Netlist Instance Attrs": [
+        {
+            "Name": "sysmem0",
+            "attrs": [
+                {
+                    "Key": "is_memory_buffer",
+                    "Val": "BOOL 1"
+                },
+                {
+                    "Key": "is_partition_reserved_memory",
+                    "Val": "BOOL 1"
+                },
+                {
+                    "Key": "stackSize",
+                    "Val": "INT 1024"
+                },
+                {
+                    "Key": "heapSize",
+                    "Val": "INT 359"
+                },
+                {
+                    "Key": "name",
+                    "Val": "STRING sysmem0"
+                },
+                {
+                    "Key": "fabric",
+                    "Val": "STRING me"
+                },
+                {
+                    "Key": "fullSize",
+                    "Val": "INT 1415"
+                },
+                {
+                    "Key": "size",
+                    "Val": "INT 1415"
+                },
+                {
+                    "Key": "offset",
+                    "Val": "INT 0"
+                },
+                {
+                    "Key": "row",
+                    "Val": "INT 0"
+                },
+                {
+                    "Key": "column",
+                    "Val": "INT 19"
+                },
+                {
+                    "Key": "accessRow",
+                    "Val": "INT 0"
+                },
+                {
+                    "Key": "accessCol",
+                    "Val": "INT 19"
+                }
+            ]
+        },
+        {
+            "Name": "PT0",
+            "attrs": [
+                {
+                    "Key": "is_partition",
+                    "Val": "BOOL 1"
+                },
+                {
+                    "Key": "color",
+                    "Val": "STRING aquamarine"
+                },
+                {
+                    "Key": "weight",
+                    "Val": "DOUBLE 1.000000"
+                },
+                {
+                    "Key": "reservedMem",
+                    "Val": "STRING sysmem0"
+                }
+            ]
+        },
+        {
+            "Name": "net0",
+            "attrs": [
+                {
+                    "Key": "is_edge",
+                    "Val": "BOOL 1"
+                },
+                {
+                    "Key": "srcInstance",
+                    "Val": "STRING DataIn0"
+                },
+                {
+                    "Key": "srcPort",
+                    "Val": "STRING po0"
+                },
+                {
+                    "Key": "dstInstance",
+                    "Val": "STRING peak_mmul_graph.peak_kernel"
+                },
+                {
+                    "Key": "dstPort",
+                    "Val": "STRING pi0"
+                },
+                {
+                    "Key": "numLocks",
+                    "Val": "INT 0"
+                },
+                {
+                    "Key": "edgeType",
+                    "Val": "STRING stream"
+                },
+                {
+                    "Key": "ephemeral",
+                    "Val": "BOOL 0"
+                }
+            ]
+        },
+        {
+            "Name": "net1",
+            "attrs": [
+                {
+                    "Key": "is_edge",
+                    "Val": "BOOL 1"
+                },
+                {
+                    "Key": "srcInstance",
+                    "Val": "STRING peak_mmul_graph.peak_kernel"
+                },
+                {
+                    "Key": "srcPort",
+                    "Val": "STRING po0"
+                },
+                {
+                    "Key": "dstInstance",
+                    "Val": "STRING DataOut0"
+                },
+                {
+                    "Key": "dstPort",
+                    "Val": "STRING pi0"
+                },
+                {
+                    "Key": "numLocks",
+                    "Val": "INT 0"
+                },
+                {
+                    "Key": "edgeType",
+                    "Val": "STRING stream"
+                },
+                {
+                    "Key": "ephemeral",
+                    "Val": "BOOL 0"
+                }
+            ]
+        },
+        {
+            "Name": "unconstraint_fifo0",
+            "attrs": [
+                {
+                    "Key": "size",
+                    "Val": "INT -1"
+                },
+                {
+                    "Key": "record_type",
+                    "Val": "STRING unspecified_fifo"
+                }
+            ]
+        },
+        {
+            "Name": "unconstraint_fifo1",
+            "attrs": [
+                {
+                    "Key": "size",
+                    "Val": "INT -1"
+                },
+                {
+                    "Key": "record_type",
+                    "Val": "STRING unspecified_fifo"
+                }
+            ]
+        }
+    ],
+    "Netlist Element Attrs": [],
+    "Net Routing": []
+}

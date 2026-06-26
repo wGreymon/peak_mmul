@@ -1,0 +1,20 @@
+
+
+BUFFER,FROM_INSTANCE.PORT,TO_INSTANCE.PORT,SIZE,MEMORY_GROUP,BANK,OFFSET,DMA_NEEDED
+buf0,AIn0.po0,peak_bf16_single_tile_graph.peak_kernel.pi0,12288,"(18, 0)",2,0,-
+sysmem3,-,-,1164,"(18, 1)",0,0,-
+buf6,peak_bf16_single_tile_graph.peak_kernel.po0,DataOut0.pi0,8192,"(18, 0)",0,0,-
+buf4,AIn0.po0,peak_bf16_single_tile_graph.peak_kernel.pi0,12288,"(18, 0)",0,8192,-
+buf5,BIn0.po0,peak_bf16_single_tile_graph.peak_kernel.pi1,12288,"(18, 0)",1,4096,-
+buf1,BIn0.po0,peak_bf16_single_tile_graph.peak_kernel.pi1,12288,"(18, 0)",2,12288,-
+buf2,peak_bf16_single_tile_graph.peak_kernel.po0,DataOut0.pi0,8192,"(18, 0)",3,8192,-
+
+
+PLIO,IN/OUT,TILE_COLUMN,CHANNEL
+BIn0,in,18,4
+AIn0,in,18,1
+DataOut0,out,18,0
+
+
+CLUSTER,KERNELS,TILE
+PT0,"peak_bf16_single_tile_graph.peak_kernel,","(18, 0)"

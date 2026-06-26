@@ -1,0 +1,8 @@
+platform=/tools/Xilinx/2025.2/Vitis/base_platforms/xilinx_vek280_base_202520_1/xilinx_vek280_base_202520_1.xpfm
+part=xcve2802-vsvh1760-2MP-e-S
+relativeroot=/home/jnz/versal-aie/peak_mmul/peak_bf16/single_tile/aie_conf_buf/pl_kernels
+original_argv=-c --mode hls --platform /tools/Xilinx/2025.2/Vitis/base_platforms/xilinx_vek280_base_202520_1/xilinx_vek280_base_202520_1.xpfm --config s2mm.cfg 
+
+[hls]
+clock=312.500000Mhz
+

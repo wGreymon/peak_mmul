@@ -1,0 +1,939 @@
+{
+    "Version": 0.0,
+    "Non-Netlist Instances": [
+        "buf0",
+        "buf1",
+        "buf2",
+        "sysmem3",
+        "buf4",
+        "buf5",
+        "buf6",
+        "PT0",
+        "net0",
+        "net1",
+        "net2",
+        "D_net0",
+        "D_net1",
+        "D_net2",
+        "unconstraint_fifo0",
+        "unconstraint_fifo1",
+        "unconstraint_fifo2"
+    ],
+    "Non-Netlist Instance Placement": [
+        {
+            "Name": "buf0",
+            "Site": "AIE_ML_MEMGRP_X18Y0",
+            "Bel": "BANK2"
+        },
+        {
+            "Name": "buf1",
+            "Site": "AIE_ML_MEMGRP_X18Y0",
+            "Bel": "BANK2"
+        },
+        {
+            "Name": "buf2",
+            "Site": "AIE_ML_MEMGRP_X18Y0",
+            "Bel": "BANK3"
+        },
+        {
+            "Name": "sysmem3",
+            "Site": "AIE_ML_MEMGRP_X18Y1",
+            "Bel": "BANK0"
+        },
+        {
+            "Name": "buf4",
+            "Site": "AIE_ML_MEMGRP_X18Y0",
+            "Bel": "BANK0"
+        },
+        {
+            "Name": "buf5",
+            "Site": "AIE_ML_MEMGRP_X18Y0",
+            "Bel": "BANK1"
+        },
+        {
+            "Name": "buf6",
+            "Site": "AIE_ML_MEMGRP_X18Y0",
+            "Bel": "BANK0"
+        },
+        {
+            "Name": "PT0",
+            "Site": "AIE_ML_CORE_X18Y0",
+            "Bel": "CORE"
+        }
+    ],
+    "Instance Placement": [
+        {
+            "Name": "AIn0",
+            "Site": "AIE_ML_PL_X17Y0",
+            "Bel": "AIE_ML_PL_S_AXIS_1"
+        },
+        {
+            "Name": "BIn0",
+            "Site": "AIE_ML_PL_X17Y0",
+            "Bel": "AIE_ML_PL_S_AXIS_4"
+        },
+        {
+            "Name": "DataOut0",
+            "Site": "AIE_ML_PL_X17Y0",
+            "Bel": "AIE_ML_PL_M_AXIS_0"
+        },
+        {
+            "Name": "peak_bf16_single_tile_graph.peak_kernel",
+            "Site": "AIE_ML_CORE_X18Y0",
+            "Bel": "CORE"
+        }
+    ],
+    "InstTerm Placement": [],
+    "DMAFIFOs Placement": [],
+    "Non-Netlist Instance Links": [
+        {
+            "buf0": [
+                "AIn0/po0",
+                "peak_bf16_single_tile_graph.peak_kernel/pi0"
+            ]
+        },
+        {
+            "buf1": [
+                "BIn0/po0",
+                "peak_bf16_single_tile_graph.peak_kernel/pi1"
+            ]
+        },
+        {
+            "buf2": [
+                "peak_bf16_single_tile_graph.peak_kernel/po0",
+                "DataOut0/pi0"
+            ]
+        },
+        {
+            "buf4": [
+                "AIn0/po0",
+                "peak_bf16_single_tile_graph.peak_kernel/pi0"
+            ]
+        },
+        {
+            "buf5": [
+                "BIn0/po0",
+                "peak_bf16_single_tile_graph.peak_kernel/pi1"
+            ]
+        },
+        {
+            "buf6": [
+                "peak_bf16_single_tile_graph.peak_kernel/po0",
+                "DataOut0/pi0"
+            ]
+        },
+        {
+            "PT0": [
+                "peak_bf16_single_tile_graph.peak_kernel"
+            ]
+        },
+        {
+            "unconstraint_fifo0": [
+                "peak_bf16_single_tile_graph.peak_kernel/pi0"
+            ]
+        },
+        {
+            "unconstraint_fifo1": [
+                "peak_bf16_single_tile_graph.peak_kernel/pi1"
+            ]
+        },
+        {
+            "unconstraint_fifo2": [
+                "DataOut0/pi0"
+            ]
+        }
+    ],
+    "Non-Netlist Instance Attrs": [
+        {
+            "Name": "buf0",
+            "attrs": [
+                {
+                    "Key": "is_memory_buffer",
+                    "Val": "BOOL 1"
+                },
+                {
+                    "Key": "is_port_data_memory_buffer",
+                    "Val": "BOOL 1"
+                },
+                {
+                    "Key": "bufferType",
+                    "Val": "STRING mem"
+                },
+                {
+                    "Key": "srcPort",
+                    "Val": "STRING AIn0/po0"
+                },
+                {
+                    "Key": "srcInstance",
+                    "Val": "STRING AIn0"
+                },
+                {
+                    "Key": "dstPort",
+                    "Val": "STRING peak_bf16_single_tile_graph.peak_kernel/pi0"
+                },
+                {
+                    "Key": "dstInstance",
+                    "Val": "STRING peak_bf16_single_tile_graph.peak_kernel"
+                },
+                {
+                    "Key": "IsPing",
+                    "Val": "BOOL 1"
+                },
+                {
+                    "Key": "pongBufferName",
+                    "Val": "STRING buf4"
+                },
+                {
+                    "Key": "name",
+                    "Val": "STRING buf0"
+                },
+                {
+                    "Key": "fabric",
+                    "Val": "STRING me"
+                },
+                {
+                    "Key": "fullSize",
+                    "Val": "INT 12288"
+                },
+                {
+                    "Key": "size",
+                    "Val": "INT 12288"
+                },
+                {
+                    "Key": "dataSplits",
+                    "Val": "STRING_LIST buf0"
+                },
+                {
+                    "Key": "offset",
+                    "Val": "INT 0"
+                },
+                {
+                    "Key": "row",
+                    "Val": "INT 0"
+                },
+                {
+                    "Key": "column",
+                    "Val": "INT 18"
+                }
+            ]
+        },
+        {
+            "Name": "buf1",
+            "attrs": [
+                {
+                    "Key": "is_memory_buffer",
+                    "Val": "BOOL 1"
+                },
+                {
+                    "Key": "is_port_data_memory_buffer",
+                    "Val": "BOOL 1"
+                },
+                {
+                    "Key": "bufferType",
+                    "Val": "STRING mem"
+                },
+                {
+                    "Key": "srcPort",
+                    "Val": "STRING BIn0/po0"
+                },
+                {
+                    "Key": "srcInstance",
+                    "Val": "STRING BIn0"
+                },
+                {
+                    "Key": "dstPort",
+                    "Val": "STRING peak_bf16_single_tile_graph.peak_kernel/pi1"
+                },
+                {
+                    "Key": "dstInstance",
+                    "Val": "STRING peak_bf16_single_tile_graph.peak_kernel"
+                },
+                {
+                    "Key": "IsPing",
+                    "Val": "BOOL 1"
+                },
+                {
+                    "Key": "pongBufferName",
+                    "Val": "STRING buf5"
+                },
+                {
+                    "Key": "name",
+                    "Val": "STRING buf1"
+                },
+                {
+                    "Key": "fabric",
+                    "Val": "STRING me"
+                },
+                {
+                    "Key": "fullSize",
+                    "Val": "INT 12288"
+                },
+                {
+                    "Key": "size",
+                    "Val": "INT 12288"
+                },
+                {
+                    "Key": "dataSplits",
+                    "Val": "STRING_LIST buf1"
+                },
+                {
+                    "Key": "offset",
+                    "Val": "INT 12288"
+                },
+                {
+                    "Key": "row",
+                    "Val": "INT 0"
+                },
+                {
+                    "Key": "column",
+                    "Val": "INT 18"
+                }
+            ]
+        },
+        {
+            "Name": "buf2",
+            "attrs": [
+                {
+                    "Key": "is_memory_buffer",
+                    "Val": "BOOL 1"
+                },
+                {
+                    "Key": "is_port_data_memory_buffer",
+                    "Val": "BOOL 1"
+                },
+                {
+                    "Key": "bufferType",
+                    "Val": "STRING mem"
+                },
+                {
+                    "Key": "srcPort",
+                    "Val": "STRING peak_bf16_single_tile_graph.peak_kernel/po0"
+                },
+                {
+                    "Key": "srcInstance",
+                    "Val": "STRING peak_bf16_single_tile_graph.peak_kernel"
+                },
+                {
+                    "Key": "dstPort",
+                    "Val": "STRING DataOut0/pi0"
+                },
+                {
+                    "Key": "dstInstance",
+                    "Val": "STRING DataOut0"
+                },
+                {
+                    "Key": "IsPing",
+                    "Val": "BOOL 1"
+                },
+                {
+                    "Key": "pongBufferName",
+                    "Val": "STRING buf6"
+                },
+                {
+                    "Key": "name",
+                    "Val": "STRING buf2"
+                },
+                {
+                    "Key": "fabric",
+                    "Val": "STRING me"
+                },
+                {
+                    "Key": "fullSize",
+                    "Val": "INT 8192"
+                },
+                {
+                    "Key": "size",
+                    "Val": "INT 8192"
+                },
+                {
+                    "Key": "dataSplits",
+                    "Val": "STRING_LIST buf2"
+                },
+                {
+                    "Key": "offset",
+                    "Val": "INT 8192"
+                },
+                {
+                    "Key": "row",
+                    "Val": "INT 0"
+                },
+                {
+                    "Key": "column",
+                    "Val": "INT 18"
+                }
+            ]
+        },
+        {
+            "Name": "sysmem3",
+            "attrs": [
+                {
+                    "Key": "is_memory_buffer",
+                    "Val": "BOOL 1"
+                },
+                {
+                    "Key": "is_partition_reserved_memory",
+                    "Val": "BOOL 1"
+                },
+                {
+                    "Key": "stackSize",
+                    "Val": "INT 1024"
+                },
+                {
+                    "Key": "heapSize",
+                    "Val": "INT 108"
+                },
+                {
+                    "Key": "name",
+                    "Val": "STRING sysmem3"
+                },
+                {
+                    "Key": "fabric",
+                    "Val": "STRING me"
+                },
+                {
+                    "Key": "fullSize",
+                    "Val": "INT 1164"
+                },
+                {
+                    "Key": "size",
+                    "Val": "INT 1164"
+                },
+                {
+                    "Key": "offset",
+                    "Val": "INT 0"
+                },
+                {
+                    "Key": "row",
+                    "Val": "INT 1"
+                },
+                {
+                    "Key": "column",
+                    "Val": "INT 18"
+                },
+                {
+                    "Key": "accessRow",
+                    "Val": "INT 0"
+                },
+                {
+                    "Key": "accessCol",
+                    "Val": "INT 18"
+                }
+            ]
+        },
+        {
+            "Name": "buf4",
+            "attrs": [
+                {
+                    "Key": "is_memory_buffer",
+                    "Val": "BOOL 1"
+                },
+                {
+                    "Key": "is_port_data_memory_buffer",
+                    "Val": "BOOL 1"
+                },
+                {
+                    "Key": "bufferType",
+                    "Val": "STRING mem"
+                },
+                {
+                    "Key": "srcPort",
+                    "Val": "STRING AIn0/po0"
+                },
+                {
+                    "Key": "srcInstance",
+                    "Val": "STRING AIn0"
+                },
+                {
+                    "Key": "dstPort",
+                    "Val": "STRING peak_bf16_single_tile_graph.peak_kernel/pi0"
+                },
+                {
+                    "Key": "dstInstance",
+                    "Val": "STRING peak_bf16_single_tile_graph.peak_kernel"
+                },
+                {
+                    "Key": "IsPong",
+                    "Val": "BOOL 1"
+                },
+                {
+                    "Key": "name",
+                    "Val": "STRING buf0d"
+                },
+                {
+                    "Key": "fabric",
+                    "Val": "STRING me"
+                },
+                {
+                    "Key": "fullSize",
+                    "Val": "INT 12288"
+                },
+                {
+                    "Key": "size",
+                    "Val": "INT 12288"
+                },
+                {
+                    "Key": "dataSplits",
+                    "Val": "STRING_LIST buf4"
+                },
+                {
+                    "Key": "offset",
+                    "Val": "INT 8192"
+                },
+                {
+                    "Key": "row",
+                    "Val": "INT 0"
+                },
+                {
+                    "Key": "column",
+                    "Val": "INT 18"
+                }
+            ]
+        },
+        {
+            "Name": "buf5",
+            "attrs": [
+                {
+                    "Key": "is_memory_buffer",
+                    "Val": "BOOL 1"
+                },
+                {
+                    "Key": "is_port_data_memory_buffer",
+                    "Val": "BOOL 1"
+                },
+                {
+                    "Key": "bufferType",
+                    "Val": "STRING mem"
+                },
+                {
+                    "Key": "srcPort",
+                    "Val": "STRING BIn0/po0"
+                },
+                {
+                    "Key": "srcInstance",
+                    "Val": "STRING BIn0"
+                },
+                {
+                    "Key": "dstPort",
+                    "Val": "STRING peak_bf16_single_tile_graph.peak_kernel/pi1"
+                },
+                {
+                    "Key": "dstInstance",
+                    "Val": "STRING peak_bf16_single_tile_graph.peak_kernel"
+                },
+                {
+                    "Key": "IsPong",
+                    "Val": "BOOL 1"
+                },
+                {
+                    "Key": "name",
+                    "Val": "STRING buf1d"
+                },
+                {
+                    "Key": "fabric",
+                    "Val": "STRING me"
+                },
+                {
+                    "Key": "fullSize",
+                    "Val": "INT 12288"
+                },
+                {
+                    "Key": "size",
+                    "Val": "INT 12288"
+                },
+                {
+                    "Key": "dataSplits",
+                    "Val": "STRING_LIST buf5"
+                },
+                {
+                    "Key": "offset",
+                    "Val": "INT 4096"
+                },
+                {
+                    "Key": "row",
+                    "Val": "INT 0"
+                },
+                {
+                    "Key": "column",
+                    "Val": "INT 18"
+                }
+            ]
+        },
+        {
+            "Name": "buf6",
+            "attrs": [
+                {
+                    "Key": "is_memory_buffer",
+                    "Val": "BOOL 1"
+                },
+                {
+                    "Key": "is_port_data_memory_buffer",
+                    "Val": "BOOL 1"
+                },
+                {
+                    "Key": "bufferType",
+                    "Val": "STRING mem"
+                },
+                {
+                    "Key": "srcPort",
+                    "Val": "STRING peak_bf16_single_tile_graph.peak_kernel/po0"
+                },
+                {
+                    "Key": "srcInstance",
+                    "Val": "STRING peak_bf16_single_tile_graph.peak_kernel"
+                },
+                {
+                    "Key": "dstPort",
+                    "Val": "STRING DataOut0/pi0"
+                },
+                {
+                    "Key": "dstInstance",
+                    "Val": "STRING DataOut0"
+                },
+                {
+                    "Key": "IsPong",
+                    "Val": "BOOL 1"
+                },
+                {
+                    "Key": "name",
+                    "Val": "STRING buf2d"
+                },
+                {
+                    "Key": "fabric",
+                    "Val": "STRING me"
+                },
+                {
+                    "Key": "fullSize",
+                    "Val": "INT 8192"
+                },
+                {
+                    "Key": "size",
+                    "Val": "INT 8192"
+                },
+                {
+                    "Key": "dataSplits",
+                    "Val": "STRING_LIST buf6"
+                },
+                {
+                    "Key": "offset",
+                    "Val": "INT 0"
+                },
+                {
+                    "Key": "row",
+                    "Val": "INT 0"
+                },
+                {
+                    "Key": "column",
+                    "Val": "INT 18"
+                }
+            ]
+        },
+        {
+            "Name": "PT0",
+            "attrs": [
+                {
+                    "Key": "is_partition",
+                    "Val": "BOOL 1"
+                },
+                {
+                    "Key": "color",
+                    "Val": "STRING aquamarine"
+                },
+                {
+                    "Key": "weight",
+                    "Val": "DOUBLE 1.000000"
+                },
+                {
+                    "Key": "reservedMem",
+                    "Val": "STRING sysmem3"
+                }
+            ]
+        },
+        {
+            "Name": "net0",
+            "attrs": [
+                {
+                    "Key": "is_edge",
+                    "Val": "BOOL 1"
+                },
+                {
+                    "Key": "srcInstance",
+                    "Val": "STRING AIn0"
+                },
+                {
+                    "Key": "srcPort",
+                    "Val": "STRING po0"
+                },
+                {
+                    "Key": "dstInstance",
+                    "Val": "STRING peak_bf16_single_tile_graph.peak_kernel"
+                },
+                {
+                    "Key": "dstPort",
+                    "Val": "STRING pi0"
+                },
+                {
+                    "Key": "numLocks",
+                    "Val": "INT 1"
+                },
+                {
+                    "Key": "edgeType",
+                    "Val": "STRING mem"
+                },
+                {
+                    "Key": "dataName",
+                    "Val": "STRING buf0"
+                },
+                {
+                    "Key": "ephemeral",
+                    "Val": "BOOL 0"
+                }
+            ]
+        },
+        {
+            "Name": "net1",
+            "attrs": [
+                {
+                    "Key": "is_edge",
+                    "Val": "BOOL 1"
+                },
+                {
+                    "Key": "srcInstance",
+                    "Val": "STRING BIn0"
+                },
+                {
+                    "Key": "srcPort",
+                    "Val": "STRING po0"
+                },
+                {
+                    "Key": "dstInstance",
+                    "Val": "STRING peak_bf16_single_tile_graph.peak_kernel"
+                },
+                {
+                    "Key": "dstPort",
+                    "Val": "STRING pi1"
+                },
+                {
+                    "Key": "numLocks",
+                    "Val": "INT 1"
+                },
+                {
+                    "Key": "edgeType",
+                    "Val": "STRING mem"
+                },
+                {
+                    "Key": "dataName",
+                    "Val": "STRING buf1"
+                },
+                {
+                    "Key": "ephemeral",
+                    "Val": "BOOL 0"
+                }
+            ]
+        },
+        {
+            "Name": "net2",
+            "attrs": [
+                {
+                    "Key": "is_edge",
+                    "Val": "BOOL 1"
+                },
+                {
+                    "Key": "srcInstance",
+                    "Val": "STRING peak_bf16_single_tile_graph.peak_kernel"
+                },
+                {
+                    "Key": "srcPort",
+                    "Val": "STRING po0"
+                },
+                {
+                    "Key": "dstInstance",
+                    "Val": "STRING DataOut0"
+                },
+                {
+                    "Key": "dstPort",
+                    "Val": "STRING pi0"
+                },
+                {
+                    "Key": "numLocks",
+                    "Val": "INT 1"
+                },
+                {
+                    "Key": "edgeType",
+                    "Val": "STRING mem"
+                },
+                {
+                    "Key": "dataName",
+                    "Val": "STRING buf2"
+                },
+                {
+                    "Key": "ephemeral",
+                    "Val": "BOOL 0"
+                }
+            ]
+        },
+        {
+            "Name": "D_net0",
+            "attrs": [
+                {
+                    "Key": "is_edge",
+                    "Val": "BOOL 1"
+                },
+                {
+                    "Key": "srcInstance",
+                    "Val": "STRING AIn0"
+                },
+                {
+                    "Key": "srcPort",
+                    "Val": "STRING po0"
+                },
+                {
+                    "Key": "dstInstance",
+                    "Val": "STRING peak_bf16_single_tile_graph.peak_kernel"
+                },
+                {
+                    "Key": "dstPort",
+                    "Val": "STRING pi0"
+                },
+                {
+                    "Key": "numLocks",
+                    "Val": "INT 1"
+                },
+                {
+                    "Key": "edgeType",
+                    "Val": "STRING mem"
+                },
+                {
+                    "Key": "dataName",
+                    "Val": "STRING buf4"
+                },
+                {
+                    "Key": "ephemeral",
+                    "Val": "BOOL 1"
+                }
+            ]
+        },
+        {
+            "Name": "D_net1",
+            "attrs": [
+                {
+                    "Key": "is_edge",
+                    "Val": "BOOL 1"
+                },
+                {
+                    "Key": "srcInstance",
+                    "Val": "STRING BIn0"
+                },
+                {
+                    "Key": "srcPort",
+                    "Val": "STRING po0"
+                },
+                {
+                    "Key": "dstInstance",
+                    "Val": "STRING peak_bf16_single_tile_graph.peak_kernel"
+                },
+                {
+                    "Key": "dstPort",
+                    "Val": "STRING pi1"
+                },
+                {
+                    "Key": "numLocks",
+                    "Val": "INT 1"
+                },
+                {
+                    "Key": "edgeType",
+                    "Val": "STRING mem"
+                },
+                {
+                    "Key": "dataName",
+                    "Val": "STRING buf5"
+                },
+                {
+                    "Key": "ephemeral",
+                    "Val": "BOOL 1"
+                }
+            ]
+        },
+        {
+            "Name": "D_net2",
+            "attrs": [
+                {
+                    "Key": "is_edge",
+                    "Val": "BOOL 1"
+                },
+                {
+                    "Key": "srcInstance",
+                    "Val": "STRING peak_bf16_single_tile_graph.peak_kernel"
+                },
+                {
+                    "Key": "srcPort",
+                    "Val": "STRING po0"
+                },
+                {
+                    "Key": "dstInstance",
+                    "Val": "STRING DataOut0"
+                },
+                {
+                    "Key": "dstPort",
+                    "Val": "STRING pi0"
+                },
+                {
+                    "Key": "numLocks",
+                    "Val": "INT 1"
+                },
+                {
+                    "Key": "edgeType",
+                    "Val": "STRING mem"
+                },
+                {
+                    "Key": "dataName",
+                    "Val": "STRING buf6"
+                },
+                {
+                    "Key": "ephemeral",
+                    "Val": "BOOL 1"
+                }
+            ]
+        },
+        {
+            "Name": "unconstraint_fifo0",
+            "attrs": [
+                {
+                    "Key": "size",
+                    "Val": "INT -1"
+                },
+                {
+                    "Key": "record_type",
+                    "Val": "STRING unspecified_fifo"
+                }
+            ]
+        },
+        {
+            "Name": "unconstraint_fifo1",
+            "attrs": [
+                {
+                    "Key": "size",
+                    "Val": "INT -1"
+                },
+                {
+                    "Key": "record_type",
+                    "Val": "STRING unspecified_fifo"
+                }
+            ]
+        },
+        {
+            "Name": "unconstraint_fifo2",
+            "attrs": [
+                {
+                    "Key": "size",
+                    "Val": "INT -1"
+                },
+                {
+                    "Key": "record_type",
+                    "Val": "STRING unspecified_fifo"
+                }
+            ]
+        }
+    ],
+    "Netlist Element Attrs": [],
+    "Net Routing": []
+}
