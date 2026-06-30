@@ -17,7 +17,7 @@ static constexpr int NumRows = 8;
 static constexpr int NumCols = 38;
 static constexpr int NumTiles = NumRows * NumCols;
 static constexpr int NumOutputPlio = 16;
-static constexpr int TilesPerOutput = NumTiles / NumOutputPlio;
+static constexpr int TilesPerOutput = NumTiles / NumOutputPlio;   // 每条IO输出 304 / 16 = 19 个tile的数据
 static_assert(NumTiles % NumOutputPlio == 0);
 
 static constexpr int NumGroupM = InputM / MmulM;
@@ -33,9 +33,9 @@ static constexpr std::uint64_t MacsPerGraphRun =
 static constexpr std::uint64_t FlopsPerGraphRun =
     static_cast<std::uint64_t>(NumTiles) * FlopsPerTileRun;
 
-static constexpr int MetadataWords = 8;
+static constexpr int MetadataWords = 7;
 static constexpr int StreamHeaderWords = 1;
-static constexpr int StreamPaddingWords = 3;
+static constexpr int StreamPaddingWords = 2;
 static constexpr int MetadataBytes = MetadataWords * sizeof(std::uint32_t);
 static constexpr int OutputWordsPerPlio =
     StreamHeaderWords + TilesPerOutput * MetadataWords + StreamPaddingWords;
@@ -45,8 +45,7 @@ static_assert(OutputBytesPerPlio % 16 == 0);
 static constexpr std::size_t TotalOutputBytes =
     NumOutputPlio * OutputBytesPerPlio;
 
-static constexpr std::uint32_t PerfMagic = 0x41494531;  // "AIE1"
-static constexpr std::uint32_t PerfVersion = 1;
+static constexpr std::uint32_t DataFlag = 0x41494531;  // "AIE1"
 static constexpr std::uint64_t AieClockHz = 1250000000ull;
 
 static constexpr const char* GraphName = "gr_peak_bf16_full_tiles";

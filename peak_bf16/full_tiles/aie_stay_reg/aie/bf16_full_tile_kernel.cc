@@ -100,16 +100,13 @@ inline void write_record(output_stream_uint32* out,
                          std::uint64_t start_cycles,
                          std::uint64_t end_cycles,
                          std::uint32_t checksum) {
-    const std::uint64_t delta_cycles = end_cycles - start_cycles;
-    writeincr(out, peak_bf16::PerfMagic);
-    writeincr(out, peak_bf16::PerfVersion);
+    writeincr(out, peak_bf16::DataFlag);
     writeincr(out, local_id);
     writeincr(out, checksum);
     writeincr(out, static_cast<std::uint32_t>(start_cycles));
     writeincr(out, static_cast<std::uint32_t>(start_cycles >> 32));
     writeincr(out, static_cast<std::uint32_t>(end_cycles));
     writeincr(out, static_cast<std::uint32_t>(end_cycles >> 32));
-    (void)delta_cycles;
 }
 
 inline void forward_records(input_stream_uint32* in,

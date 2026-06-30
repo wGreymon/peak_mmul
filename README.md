@@ -1,6 +1,6 @@
 # peak_mmul
 
-Versal AIE-ML 上的 gemm 峰值性能实验工程。
+Versal AIE-ML 上的 gemm 峰值计算性能实验工程。
 
 ## 目录结构
 

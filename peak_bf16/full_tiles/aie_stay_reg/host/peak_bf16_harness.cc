@@ -69,21 +69,20 @@ std::vector<TileRecord> parse_records(const OutputChannels& output) {
             const std::size_t base =
                 StreamHeaderWords +
                 static_cast<std::size_t>(local) * MetadataWords;
-            const std::uint32_t magic = output[ch][base + 0];
-            const std::uint32_t version = output[ch][base + 1];
-            if (magic != PerfMagic || version != PerfVersion) {
-                throw std::runtime_error("invalid metadata magic/version.");
+            const std::uint32_t data_flag = output[ch][base + 0];
+            if (data_flag != DataFlag) {
+                throw std::runtime_error("invalid metadata data flag.");
             }
 
             TileRecord r;
             r.channel = ch;
-            r.local_id = static_cast<int>(output[ch][base + 2]);
+            r.local_id = static_cast<int>(output[ch][base + 1]);
             r.tile_id = ch * TilesPerOutput + r.local_id;
-            r.checksum = output[ch][base + 3];
-            r.start_cycles = make_u64(output[ch][base + 4],
-                                      output[ch][base + 5]);
-            r.end_cycles = make_u64(output[ch][base + 6],
-                                    output[ch][base + 7]);
+            r.checksum = output[ch][base + 2];
+            r.start_cycles = make_u64(output[ch][base + 3],
+                                      output[ch][base + 4]);
+            r.end_cycles = make_u64(output[ch][base + 5],
+                                    output[ch][base + 6]);
             r.delta_cycles = r.end_cycles - r.start_cycles;
             records.push_back(r);
         }
@@ -146,8 +145,6 @@ void print_summary(const std::vector<TileRecord>& records) {
     std::cout << " - global start cycles           : " << min_start << '\n';
     std::cout << " - global end cycles             : " << max_end << '\n';
     std::cout << " - global cycles                 : " << global_cycles << '\n';
-    std::cout << " - global cycles note            : "
-              << "debug only, tile cycle counters are not synchronized\n";
     std::cout << " - assumed AIE clock Hz          : " << AieClockHz << '\n';
     std::cout << " - per-tile avg GFLOP/s          : " << avg_tile_gflops << '\n';
     std::cout << " - array TFLOP/s by avg tile     : "
