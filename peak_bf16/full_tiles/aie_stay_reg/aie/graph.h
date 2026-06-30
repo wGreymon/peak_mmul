@@ -46,10 +46,9 @@ public:
 
                 const int row = ch / 2;
                 const int col = (ch % 2) * peak_bf16::TilesPerOutput + stage;
-                adf::location<adf::kernel>(tile_kernel[idx]) =
-                    adf::tile(col, row);
+                adf::location<adf::kernel>(tile_kernel[idx]) = adf::tile(col, row);
                 adf::location<adf::stack>(tile_kernel[idx]) =
-                    adf::location<adf::kernel>(tile_kernel[idx]);
+                    adf::location<adf::kernel>(tile_kernel[idx]);    // 把该kernel所需的栈空间也放在同一个tile上
             }
 
             for (int stage = 0; stage < peak_bf16::TilesPerOutput - 1; ++stage) {
