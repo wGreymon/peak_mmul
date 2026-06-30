@@ -15,10 +15,6 @@ DEVICE ?= vek280
 TARGET ?= hw
 DEBUG ?= 0
 GRAPH_ITERATIONS ?= 1
-NUM_REPETITIONS ?= 1
-CHANNEL_DELAY ?= 0
-RUN_PERF_MODE ?= 0
-PERF_REPETITIONS ?= 1
 
 include ${TEST_HARNESS_REPO_PATH}/test_harness/common.mk
 
@@ -29,7 +25,6 @@ VPP_TEMP_DIR := $(BUILD_DIR)/_x
 
 TEST_HARNESS_XSA := ${TEST_HARNESS_REPO_PATH}/bin/vek280_test_harness.xsa
 COMMON_OPS_HPP := ${TEST_HARNESS_REPO_PATH}/stx_kernels/common/include/stx_ops.hpp
-COMMON_HOST_UTILS_HPP := ${TEST_HARNESS_REPO_PATH}/stx_kernels/common/include/stx_host_utils.hpp
 
 AIE_CXX_FLAGS := -I $(XILINX_VITIS)/aietools/include
 AIE_CXX_FLAGS += -I $(KERNEL_DIR)/aie
@@ -72,8 +67,7 @@ $(CLIENT_EXE): $(KERNEL_DIR)/client/tb.cpp \
                $(KERNEL_DIR)/host/peak_bf16_harness.cc \
                $(KERNEL_DIR)/include/peak_bf16_harness.hpp \
                $(KERNEL_DIR)/include/peak_bf16_config.h \
-               $(COMMON_OPS_HPP) \
-               $(COMMON_HOST_UTILS_HPP) | ${BUILD_DIR}
+               $(COMMON_OPS_HPP) | ${BUILD_DIR}
 	mkdir -p $(dir $@)
 	${CXX} -o $@ $(KERNEL_DIR)/client/tb.cpp \
 		$(KERNEL_DIR)/host/peak_bf16_harness.cc \
@@ -116,10 +110,6 @@ ifeq ($(TARGET), hw)
 ifneq ($(CPU), arm)
 	cd ${PKG_DIR} && LD_LIBRARY_PATH=${LD_LIBRARY_PATH} \
 		GRAPH_ITERATIONS=${GRAPH_ITERATIONS} \
-		NUM_REPETITIONS=${NUM_REPETITIONS} \
-		CHANNEL_DELAY=${CHANNEL_DELAY} \
-		RUN_PERF_MODE=${RUN_PERF_MODE} \
-		PERF_REPETITIONS=${PERF_REPETITIONS} \
 		./run_script.sh
 endif
 endif

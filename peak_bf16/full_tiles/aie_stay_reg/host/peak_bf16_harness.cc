@@ -1,7 +1,6 @@
 #include "peak_bf16_harness.hpp"
 
 #include <algorithm>
-#include <chrono>
 #include <cstddef>
 #include <cstdint>
 #include <iostream>
@@ -10,7 +9,6 @@
 #include <vector>
 
 #include "peak_bf16_config.h"
-#include "stx_host_utils.hpp"
 #include "test_harness_mgr_base.hpp"
 #include "test_harness_mgr_client.hpp"
 #include "test_harness_sockets.hpp"
@@ -37,16 +35,14 @@ std::uint64_t make_u64(std::uint32_t lo, std::uint32_t hi) {
 }
 
 std::vector<test_harness::test_harness_args> make_args(
-    OutputChannels& output,
-    int repetitions,
-    int channel_delay) {
+    OutputChannels& output) {
     std::vector<test_harness::test_harness_args> args;
     for (int ch = 0; ch < NumOutputPlio; ++ch) {
         args.push_back({static_cast<test_harness::channel_index>(
                             test_harness::PLIO_01_FROM_AIE + ch),
                         OutputBytesPerPlio,
-                        static_cast<std::size_t>(repetitions),
-                        static_cast<std::uint64_t>(channel_delay),
+                        static_cast<std::size_t>(1),
+                        static_cast<std::uint64_t>(0),
                         reinterpret_cast<char*>(output[ch].data())});
     }
     return args;
@@ -95,25 +91,18 @@ void print_summary(const std::vector<TileRecord>& records) {
         throw std::runtime_error("unexpected number of tile records.");
     }
 
-    std::uint64_t min_start = std::numeric_limits<std::uint64_t>::max();
-    std::uint64_t max_end = 0;
     std::uint64_t min_delta = std::numeric_limits<std::uint64_t>::max();
     std::uint64_t max_delta = 0;
     long double sum_delta = 0.0L;
-    std::uint64_t checksum_sum = 0;
 
     for (const TileRecord& r : records) {
-        min_start = std::min(min_start, r.start_cycles);
-        max_end = std::max(max_end, r.end_cycles);
         min_delta = std::min(min_delta, r.delta_cycles);
         max_delta = std::max(max_delta, r.delta_cycles);
         sum_delta += static_cast<long double>(r.delta_cycles);
-        checksum_sum += r.checksum;
     }
 
     const long double avg_delta =
         sum_delta / static_cast<long double>(records.size());
-    const std::uint64_t global_cycles = max_end - min_start;
     const double avg_tile_seconds =
         static_cast<double>(avg_delta) / static_cast<double>(AieClockHz);
     const double max_tile_seconds =
@@ -132,20 +121,11 @@ void print_summary(const std::vector<TileRecord>& records) {
     const double max_delta_efficiency =
         max_delta_array_tflops / theoretical_tflops * 100.0;
 
-    std::cout << "AIE full-tile cycle metadata\n";
-    std::cout << " - valid tile records            : " << records.size() << '\n';
-    std::cout << " - tiles                         : " << NumTiles << '\n';
-    std::cout << " - output PLIOs                  : " << NumOutputPlio << '\n';
-    std::cout << " - records per PLIO              : " << TilesPerOutput << '\n';
-    std::cout << " - checksum sum                  : " << checksum_sum << '\n';
+    std::cout << "AIE full-tile peak summary\n";
     std::cout << " - min delta cycles              : " << min_delta << '\n';
     std::cout << " - max delta cycles              : " << max_delta << '\n';
     std::cout << " - avg delta cycles              : "
               << static_cast<double>(avg_delta) << '\n';
-    std::cout << " - global start cycles           : " << min_start << '\n';
-    std::cout << " - global end cycles             : " << max_end << '\n';
-    std::cout << " - global cycles                 : " << global_cycles << '\n';
-    std::cout << " - assumed AIE clock Hz          : " << AieClockHz << '\n';
     std::cout << " - per-tile avg GFLOP/s          : " << avg_tile_gflops << '\n';
     std::cout << " - array TFLOP/s by avg tile     : "
               << avg_delta_array_tflops << '\n';
@@ -167,10 +147,6 @@ void run_harness_bf16_full_tiles(OutputChannels& output,
         throw std::invalid_argument("graph_iterations must be positive.");
     }
 
-    const stx::ops::HarnessRunOptions run_options =
-        stx::ops::get_harness_run_options();
-    const stx::ops::FuncModeOptions& func_mode = run_options.func_mode;
-
     for (int ch = 0; ch < NumOutputPlio; ++ch) {
         output[ch].assign(OutputWordsPerPlio * graph_iterations, 0);
     }
@@ -186,33 +162,15 @@ void run_harness_bf16_full_tiles(OutputChannels& output,
               << InputM << "x" << InputK << "x" << InputN << '\n';
     std::cout << " - FLOPs per tile                : " << FlopsPerTileRun << '\n';
     std::cout << " - FLOPs per graph iteration     : " << FlopsPerGraphRun << '\n';
-    std::cout << " - Output bytes per PLIO         : " << OutputBytesPerPlio << '\n';
-    std::cout << " - Total metadata bytes          : " << TotalOutputBytes << '\n';
     std::cout << " - Graph iterations              : " << graph_iterations << '\n';
-    std::cout << " - Correctness check             : disabled\n";
-    std::cout << " - Channel delay                 : "
-              << func_mode.channel_delay << " cycles\n";
-    std::cout << " - Run performance mode          : "
-              << (run_options.run_perf_mode ? "yes" : "no") << '\n';
 
     test_harness::test_harness_mgr_client mgr(XclbinPath,
                                               {GraphName},
                                               "vek280");
 
-    std::cout << "Testing Function mode." << std::endl;
-    const auto aie_t0 = std::chrono::high_resolution_clock::now();
     mgr.runAIEGraph(GraphIndex, static_cast<unsigned int>(graph_iterations));
-    mgr.runTestHarness(test_harness::FUNC_MODE,
-                       make_args(output,
-                                 func_mode.num_repetitions,
-                                 func_mode.channel_delay));
+    mgr.runTestHarness(test_harness::FUNC_MODE, make_args(output));
     mgr.waitForRes(0);
-    const auto aie_t1 = std::chrono::high_resolution_clock::now();
-
-    mgr.printPerf();
-    const double aie_us =
-        std::chrono::duration<double, std::micro>(aie_t1 - aie_t0).count();
-    std::cout << " - AIE host end-to-end latency   : " << aie_us << " us\n";
 
     if (!mgr.isResultValid()) {
         throw std::runtime_error("test harness transaction is not valid.");

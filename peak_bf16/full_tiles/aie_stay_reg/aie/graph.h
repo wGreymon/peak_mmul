@@ -11,6 +11,11 @@ class PeakBf16FullTilesGraph : public adf::graph {
 private:
     adf::kernel tile_kernel[peak_bf16::NumTiles];
 
+    static std::string two_digit(int value) {
+        return value < 10 ? "0" + std::to_string(value)
+                          : std::to_string(value);
+    }
+
 public:
     adf::output_plio out[peak_bf16::NumOutputPlio];
 
@@ -22,6 +27,7 @@ public:
                 "data/Cycles" + std::to_string(ch) + ".txt");
         }
 
+        // 304 tile / 16 
         for (int ch = 0; ch < peak_bf16::NumOutputPlio; ++ch) {
             for (int stage = 0; stage < peak_bf16::TilesPerOutput; ++stage) {
                 const int idx = ch * peak_bf16::TilesPerOutput + stage;
@@ -46,8 +52,7 @@ public:
                     adf::location<adf::kernel>(tile_kernel[idx]);
             }
 
-            for (int stage = 0; stage < peak_bf16::TilesPerOutput - 1;
-                 ++stage) {
+            for (int stage = 0; stage < peak_bf16::TilesPerOutput - 1; ++stage) {
                 const int src = ch * peak_bf16::TilesPerOutput + stage;
                 const int dst = src + 1;
                 adf::connect<adf::stream>(tile_kernel[src].out[0],
@@ -59,13 +64,6 @@ public:
             adf::connect<adf::stream>(tile_kernel[tail].out[0], out[ch].in[0]);
         }
     }
-
-private:
-    static std::string two_digit(int value) {
-        return value < 10 ? "0" + std::to_string(value)
-                          : std::to_string(value);
-    }
-
 };
 
 extern PeakBf16FullTilesGraph gr_peak_bf16_full_tiles;

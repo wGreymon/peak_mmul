@@ -12,5 +12,5 @@ Build and run:
 
 ```sh
 cd /home/jnz/versal-aie/peak_mmul/peak_bf16/full_tiles/aie_stay_reg
-make run GRAPH_ITERATIONS=1 RUN_PERF_MODE=0
+make run GRAPH_ITERATIONS=1
 ```
